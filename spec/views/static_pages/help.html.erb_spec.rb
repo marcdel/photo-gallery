@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Help page" do
   subject { page }
 
-  before { visit '/static_pages/help' }
+  before { visit help_path }
   let(:page_title) { "Help" }
   let(:heading) { "Help" }
 
