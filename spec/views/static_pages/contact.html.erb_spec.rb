@@ -1,5 +1,8 @@
 require 'spec_helper'
 
-describe "static_pages/contact.html.erb" do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe "Contact page" do
+  it "should have content 'Contact'" do
+    visit '/static_pages/contact'
+    page.should have_content('Contact')
+  end
 end

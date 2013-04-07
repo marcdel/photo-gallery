@@ -1,5 +1,10 @@
 require 'spec_helper'
 
-describe "static_pages/home.html.erb" do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe "Home page" do
+
+  it "should have the content 'Photo Gallery'" do
+    visit root_path
+    page.should have_content('Photo Gallery')
+  end
+
 end
