@@ -5,11 +5,9 @@ describe "About page" do
 
   before { visit "/static_pages/about" }
 
-  it "should have content 'About'" do
-    should have_content("About")
-  end
+  let(:page_title) { "About" }
+  let(:heading) { "About" }
 
-  it "should have the right title" do
-    should have_selector("title", text: "Photo Gallery | About")
-  end
+  it { should have_selector("title", text: full_title(page_title)) }
+  it { should have_selector("h1", text: heading) }
 end

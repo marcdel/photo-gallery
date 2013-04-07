@@ -5,11 +5,9 @@ describe "Contact page" do
 
   before { visit "/static_pages/contact" }
 
-  it "should have content 'Contact'" do
-    should have_content("Contact")
-  end
+  let(:page_title) { "Contact" }
+  let(:heading) { "Contact" }
 
-  it "should have the right title" do
-    should have_selector("title", text: "Photo Gallery | Contact")
-  end
+  it { should have_selector("title", text: full_title(page_title)) }
+  it { should have_selector("h1", text: heading) }
 end

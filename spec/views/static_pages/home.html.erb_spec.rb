@@ -4,13 +4,10 @@ describe "Home page" do
   subject { page }
 
   before { visit root_path }
-  let(:page_title) { "Photo Gallery" }
+  let(:page_title) { "" }
+  let(:heading) { "Photo Gallery" }
 
-  it "should have the content 'Photo Gallery'" do
-    should have_content("Photo Gallery")
-  end
-
-  it "should have the right title" do
-    should have_selector("title", text: "Photo Gallery")
-  end
+  it { should have_selector("h1",    text: heading) }
+  it { should have_selector("title", text: full_title(page_title)) }
+  it { should_not have_selector "title", text: "| Home" }
 end

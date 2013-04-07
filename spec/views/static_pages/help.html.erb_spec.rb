@@ -4,12 +4,9 @@ describe "Help page" do
   subject { page }
 
   before { visit '/static_pages/help' }
+  let(:page_title) { "Help" }
+  let(:heading) { "Help" }
 
-  it "should have content 'Help'" do
-    should have_content('Help')
-  end
-
-  it "should have the right title" do
-    should have_selector('title', text: "Photo Gallery | Help")
-  end
+  it { should have_selector("title", text: full_title(page_title)) }
+  it { should have_selector("h1", text: heading) }
 end
