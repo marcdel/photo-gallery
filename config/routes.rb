@@ -1,4 +1,5 @@
 PhotoGallery::Application.routes.draw do
+  resources :galleries, only: [:index]
 
   root :to => "static_pages#home"
   get '/help', to: 'static_pages#help'

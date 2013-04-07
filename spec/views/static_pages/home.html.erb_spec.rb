@@ -5,7 +5,7 @@ describe "Home page" do
 
   before { visit root_path }
   let(:page_title) { "" }
-  let(:heading) { "Photo Gallery" }
+  let(:heading) { "Welcome to the gallery" }
 
   it { should have_selector("h1",    text: heading) }
   it { should have_selector("title", text: full_title(page_title)) }
