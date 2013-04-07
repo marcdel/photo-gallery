@@ -2,6 +2,10 @@
 
 <h1>Galleries</h1>
 
+<% if current_user && current_user.admin? %>
+  <%= link_to "Add Gallery", new_gallery_path %>
+<% end %>
+
 <ul class="thumbnails">
   <%= render 'galleries/gallery_thumbnail' %>
   <%= render 'galleries/gallery_thumbnail' %>

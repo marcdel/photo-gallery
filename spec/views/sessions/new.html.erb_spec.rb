@@ -3,12 +3,13 @@ require 'spec_helper'
 describe "Sign in page" do
   subject { page }
 
-  before { visit signin_path }
   let(:page_title) { "Sign In" }
   let(:heading) { "Sign In" }
   let(:signin_link) { "Sign In" }
   let(:signout_link) { "Sign Out" }
   let(:error_class) { "div.alert.alert-error" }
+
+  before { visit signin_path }
 
   it { should have_selector("title", text: full_title(page_title)) }
   it { should have_selector("h1", text: heading) }
