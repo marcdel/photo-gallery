@@ -21,7 +21,23 @@ class GalleriesController < ApplicationController
       flash[:success] = "Gallery #{@gallery.title} created."
       redirect_to galleries_url
     else
-      render 'new'
+      render "new"
     end
+  end
+
+  def update
+    @gallery = Gallery.find(params[:id])
+    if @gallery.update_attributes(params[:gallery])
+      flash[:success] = "Gallery #{@gallery.title} updated."
+      redirect_to @gallery
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @gallery = Gallery.find(params[:id]).destroy
+    flash[:success] = "Gallery #{@gallery.title} deleted."
+    redirect_to galleries_url
   end
 end

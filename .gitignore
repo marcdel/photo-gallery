@@ -8,6 +8,10 @@ gnore bundler config
 /log/*.log
 /tmp
 
+# Ignore uploaded images
+/public/system/galleries/*
+/public/system/photos/*
+
 # Ignore other unneeded files.
 doc/
 *.swp
