@@ -1,6 +1,6 @@
 PhotoGallery::Application.routes.draw do
 
-  resources :galleries, only: [:new, :create, :index]
+  resources :galleries
   resources :sessions, only: [:new, :create, :destroy]
 
   get '/signin', to: 'sessions#new'

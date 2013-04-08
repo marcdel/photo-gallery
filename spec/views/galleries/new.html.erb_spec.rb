@@ -5,7 +5,7 @@ describe "New gallery page" do
 
   let(:page_title) { "New Gallery" }
   let(:heading) { "New Gallery" }
-  let(:create_button) { "Create" }
+  let(:create_button) { "Save" }
   let(:error_class) { "div.alert.alert-error" }
 
   before { visit new_gallery_path }
