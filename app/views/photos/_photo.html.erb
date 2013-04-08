@@ -1,0 +1,19 @@
+<li class="span4">
+  <div class="thumbnail">
+    <%= link_to photo do %>
+        <%= image_tag photo.image.url(:thumb) %>
+    <% end %>
+    <div class="caption">
+      <h3>
+        <%= link_to photo.title, photo %>
+      </h3>
+      <% if is_admin? %>
+          <p>
+            <%= link_to "Edit", edit_photo_path, class: "btn btn-primary btn-mini" %>
+            <%= link_to "Delete", photo, method: :delete,
+                        data: { confirm: "Delete #{photo.title}?" }, class: "btn btn-mini" %>
+          </p>
+      <% end %>
+    </div>
+  </div>
+</li>

@@ -1,5 +1,5 @@
 class GalleriesController < ApplicationController
-  before_filter :is_admin?, only: [ :edit, :destroy ]
+  before_filter :is_admin?, only: [:create, :edit, :destroy ]
 
   def index
     @galleries = Gallery.paginate(page: params[:page])
@@ -7,6 +7,7 @@ class GalleriesController < ApplicationController
 
   def show
     @gallery = Gallery.find(params[:id])
+    @photos = @gallery.photos.paginate(page: params[:page])
   end
 
   def edit
@@ -20,7 +21,7 @@ class GalleriesController < ApplicationController
   def create
     @gallery = Gallery.new(params[:gallery])
     if @gallery.save
-      flash[:success] = "Gallery #{@gallery.title} created."
+      flash[:success] = "Gallery '#{@gallery.title}' created."
       redirect_to galleries_url
     else
       render "new"
@@ -30,7 +31,7 @@ class GalleriesController < ApplicationController
   def update
     @gallery = Gallery.find(params[:id])
     if @gallery.update_attributes(params[:gallery])
-      flash[:success] = "Gallery #{@gallery.title} updated."
+      flash[:success] = "Gallery '#{@gallery.title}' updated."
       redirect_to @gallery
     else
       render "edit"
@@ -39,7 +40,7 @@ class GalleriesController < ApplicationController
 
   def destroy
     @gallery = Gallery.find(params[:id]).destroy
-    flash[:success] = "Gallery #{@gallery.title} deleted."
+    flash[:success] = "Gallery '#{@gallery.title}' deleted."
     redirect_to galleries_url
   end
 end

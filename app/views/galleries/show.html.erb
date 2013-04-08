@@ -2,3 +2,15 @@
 
 <h1><%= @gallery.title %></h1>
 <p><%= @gallery.description %></p>
+
+<% if is_admin? %>
+    <h3>
+      <%= link_to "Add Photo", new_photo_path, class: "btn btn-primary" %>
+    </h3>
+<% end %>
+
+<ul class="thumbnails">
+  <%= render @photos %>
+</ul>
+
+<%= will_paginate @photos %>
