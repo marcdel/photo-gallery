@@ -1,4 +1,6 @@
 class GalleriesController < ApplicationController
+  before_filter :is_admin?, only: [ :edit, :destroy ]
+
   def index
     @galleries = Gallery.paginate(page: params[:page])
   end

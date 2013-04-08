@@ -7,7 +7,6 @@
       <h3>
         <%= link_to gallery.title, gallery %>
       </h3>
-      <!--<p><%= gallery.description %></p>-->
       <% if is_admin? %>
           <p>
             <%= link_to "Edit", edit_gallery_path(gallery), class: "btn btn-primary btn-mini" %>

@@ -30,7 +30,7 @@ describe "Galleries page" do
 
   describe "as a logged in user" do
     before do
-      signin_user(user)
+      signin(user)
       visit galleries_path
     end
 
@@ -39,7 +39,8 @@ describe "Galleries page" do
 
   describe "as a logged in admin user" do
       before do
-        signin_admin_user(user)
+        user.toggle!(:admin)
+        signin(user)
         visit galleries_path
       end
 
@@ -47,5 +48,11 @@ describe "Galleries page" do
 
       it { should have_link("Edit") }
       it { should have_link("Delete") }
+
+      describe "delete gallery clicked" do
+        it "should delete the gallery" do
+          expect { click_link "Delete" }.to change(Gallery, :count).by(-1)
+        end
+      end
   end
 end
