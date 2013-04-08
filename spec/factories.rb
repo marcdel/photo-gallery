@@ -9,4 +9,9 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :gallery do
+    sequence(:title) { |n| "Gallery #{n}" }
+    sequence(:description) { |n| "Description of gallery #{n}" }
+  end
 end

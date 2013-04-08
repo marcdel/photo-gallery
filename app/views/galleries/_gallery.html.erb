@@ -1,0 +1,23 @@
+<li class="span4">
+  <div class="thumbnail">
+    <a href="#">
+      <!--<img src="http://placekitten.com/g/<%= rand(800..1024) %>/<%= rand(600..768) %>"/>-->
+      <!--<img src="http://placekitten.com/g/<%= [1024, 800].sample %>/<%= [768, 600].sample %>"/>-->
+      <img src="http://placekitten.com/g/800/600"/>
+    </a>
+    <div class="caption">
+      <h3>
+        <a href="#">
+          <%= gallery.title %>
+        </a>
+      </h3>
+      <!--<p><%= gallery.description %></p>-->
+      <% if is_admin? %>
+          <p>
+            <a class="btn btn-primary btn-mini" href="#">Edit</a>
+            <a class="btn btn-mini" href="#">Delete</a>
+          </p>
+      <% end %>
+    </div>
+  </div>
+</li>

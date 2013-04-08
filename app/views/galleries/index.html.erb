@@ -2,23 +2,14 @@
 
 <h1>Galleries</h1>
 
-<% if current_user && current_user.admin? %>
-  <%= link_to "Add Gallery", new_gallery_path %>
+<% if is_admin? %>
+    <h3>
+      <%= link_to "Add Gallery", new_gallery_path, class: "btn btn-primary" %>
+    </h3>
 <% end %>
 
 <ul class="thumbnails">
-  <%= render 'galleries/gallery_thumbnail' %>
-  <%= render 'galleries/gallery_thumbnail' %>
-  <%= render 'galleries/gallery_thumbnail' %>
-  <%= render 'galleries/gallery_thumbnail' %>
-
-  <%= render 'galleries/gallery_thumbnail' %>
-  <%= render 'galleries/gallery_thumbnail' %>
-  <%= render 'galleries/gallery_thumbnail' %>
-  <%= render 'galleries/gallery_thumbnail' %>
-
-  <%= render 'galleries/gallery_thumbnail' %>
-  <%= render 'galleries/gallery_thumbnail' %>
-  <%= render 'galleries/gallery_thumbnail' %>
-  <%= render 'galleries/gallery_thumbnail' %>
+  <%= render @galleries %>
 </ul>
+
+<%= will_paginate %>
