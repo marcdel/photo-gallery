@@ -32,7 +32,7 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.find(params[:id])
     if @gallery.update_attributes(params[:gallery])
       flash[:success] = "Gallery '#{@gallery.title}' updated."
-      redirect_to @gallery
+      redirect_to galleries_url
     else
       render "edit"
     end

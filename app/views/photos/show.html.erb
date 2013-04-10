@@ -1,0 +1,4 @@
+<% provide(:title, @photo.title) %>
+
+<h1><%= @photo.title %></h1>
+<%= image_tag @photo.image.url(:lightbox) %>
