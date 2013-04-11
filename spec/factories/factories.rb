@@ -2,8 +2,8 @@ FactoryGirl.define do
   factory :user do
     sequence(:name)  { |n| "User #{n}" }
     sequence(:email) { |n| "user#{n}@email.com"}
-    password 'password'
-    password_confirmation 'password'
+    password "password"
+    password_confirmation "password"
 
     factory :admin do
       admin true
@@ -13,9 +13,17 @@ FactoryGirl.define do
   factory :gallery do
     sequence(:title) { |n| "Gallery #{n}" }
     sequence(:description) { |n| "Description of gallery #{n}" }
+    cover File.new(Rails.root + "spec/factories/rails.png")
+
+    factory :gallery_with_photo do
+      after_create do |gallery|
+        create(:photo, gallery: gallery)
+      end
+    end
   end
 
   factory :photo do
     sequence(:title) { |n| "Gallery #{n}" }
+    image File.new(Rails.root + "spec/factories/rails.png")
   end
 end

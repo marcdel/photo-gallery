@@ -25,7 +25,10 @@ describe "New gallery page" do
   end
 
   describe "submit with valid information" do
-    before{ fill_in "Title", with: "Test title" }
+    before do
+      fill_in "Title", with: "Test title"
+      attach_file("Cover", Rails.root + 'spec/factories/rails.png')
+    end
 
     it "should create a new gallery" do
       expect { click_button save_button }.to change(Gallery, :count).by(1)
