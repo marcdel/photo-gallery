@@ -28,6 +28,19 @@ describe "Galleries page" do
 
   it_should_behave_like "non-admin users"
 
+  describe "gallery pagination" do
+    before(:all) { 12.times { FactoryGirl.create(:gallery) } }
+    after(:all) { Gallery.delete_all }
+
+    it { should have_selector("div.pagination") }
+
+    it "should show each gallery" do
+      Gallery.paginate(page: 1, per_page: 6).each do |gallery|
+        page.should have_selector("a", text: gallery.title)
+      end
+    end
+  end
+
   describe "as a logged in user" do
     before do
       signin(user)

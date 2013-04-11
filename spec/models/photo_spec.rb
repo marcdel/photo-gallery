@@ -35,4 +35,10 @@ describe Photo do
 
     it { should_not be_valid }
   end
+
+  describe "when image is not present" do
+    before { @photo.image = nil }
+
+    it { should_not be_valid }
+  end
 end
