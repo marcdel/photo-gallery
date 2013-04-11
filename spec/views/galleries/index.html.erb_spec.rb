@@ -59,8 +59,8 @@ describe "Galleries page" do
 
       it { should have_link("Add Gallery", href: new_gallery_path) }
 
-      it { should have_link("Edit") }
-      it { should have_link("Delete") }
+      it { should have_link("Edit"), href: edit_gallery_path(gallery) }
+      it { should have_link("Delete"), href: gallery_path(gallery) }
 
       describe "delete gallery clicked" do
         it "should delete the gallery" do
