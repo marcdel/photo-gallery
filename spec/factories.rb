@@ -14,4 +14,8 @@ FactoryGirl.define do
     sequence(:title) { |n| "Gallery #{n}" }
     sequence(:description) { |n| "Description of gallery #{n}" }
   end
+
+  factory :photo do
+    sequence(:title) { |n| "Gallery #{n}" }
+  end
 end
