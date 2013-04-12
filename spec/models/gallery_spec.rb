@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Gallery do
   let(:gallery) { FactoryGirl.create(:gallery) }

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Photo do
   #TODO: https://gist.github.com/marcdel/5361613

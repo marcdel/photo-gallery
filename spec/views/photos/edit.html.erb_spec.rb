@@ -1,20 +1,28 @@
 require "spec_helper"
 
-describe "Edit gallery page" do
+describe "Edit photo page" do
   subject { page }
 
-  let(:user) { FactoryGirl.create(:admin) }
-  let(:gallery) { FactoryGirl.create(:gallery) }
   let(:error_class) { "div.alert.alert-error" }
   let(:save_button) { "Save" }
-
-  before do
-    signin user
-    gallery.save
-    visit edit_gallery_path(gallery)
+  let(:admin_user) { FactoryGirl.create(:admin) }
+  let(:gallery) { FactoryGirl.create(:gallery) }
+  let(:photo) do
+    gallery.photos.build(title: "Test", image: File.new(Rails.root + "spec/factories/rails.png"))
   end
 
-  #it { should have_selector("title", full_title(gallery.title)) }
+  before do
+    signin(admin_user)
+    gallery.save
+    photo.save
+    visit edit_gallery_photo_path(gallery, photo)
+  end
+
+  #it { should have_selector("title", full_title(photo.title)) }
+  #it "should have the correct title" do
+  #  find("title").native.text
+  #  page.should have_selector("title", full_title(photo.title))
+  #end
 
   describe "submit with valid information" do
     let(:new_title) { "New Title" }
@@ -22,14 +30,12 @@ describe "Edit gallery page" do
 
     before do
       fill_in "Title", with: new_title
-      fill_in "Description", with: new_description
       click_button save_button
     end
 
     #it { should have_selector("title", full_title(new_title)) }
     #it { should have_selector("h1", new_title) }
-    specify { gallery.reload.title.should == new_title }
-    specify { gallery.reload.description.should == new_description }
+    specify { photo.reload.title.should == new_title }
   end
 
   describe "submit with invalid information" do

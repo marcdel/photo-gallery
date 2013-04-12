@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "Galleries page" do
   subject { page }
@@ -13,7 +13,7 @@ describe "Galleries page" do
     visit galleries_path
   end
 
-  shared_examples_for "non-admin users" do
+  shared_examples_for "gallery#index non-admin users" do
     it { should_not have_link("Add Gallery", href: new_gallery_path) }
 
     it { should_not have_link("Edit") }
@@ -26,7 +26,7 @@ describe "Galleries page" do
   it { should have_selector("ul") }
   it { should have_selector("ul li") }
 
-  it_should_behave_like "non-admin users"
+  it_should_behave_like "gallery#index non-admin users"
 
   describe "gallery pagination" do
     before(:all) { 12.times { FactoryGirl.create(:gallery) } }
@@ -37,6 +37,7 @@ describe "Galleries page" do
     it "should show each gallery" do
       Gallery.paginate(page: 1, per_page: 6).each do |gallery|
         page.should have_selector("a", text: gallery.title)
+        page.should have_selector("img", src: gallery.cover.url(:thumb))
       end
     end
   end
@@ -47,7 +48,7 @@ describe "Galleries page" do
       visit galleries_path
     end
 
-    it_should_behave_like "non-admin users"
+    it_should_behave_like "gallery#index non-admin users"
   end
 
   describe "as a logged in admin user" do

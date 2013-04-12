@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe "About page" do
   subject { page }
