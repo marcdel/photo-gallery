@@ -1,0 +1,5 @@
+# Add application configuration variables here, as shown below.
+#
+AWS_BUCKET: bucket
+AWS_ACCESS_KEY_ID: access_key
+AWS_SECRET_ACCESS_KEY: secret_key
