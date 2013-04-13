@@ -10,3 +10,6 @@ Or
 	heroku config:add AWS_BUCKET=bucket
 	heroku config:add AWS_ACCESS_KEY_ID=access_key
 	heroku config:add AWS_SECRET_ACCESS_KEY=secret_key
+
+Create sample data
+    bundle exec rake db:reset && bundle exec rake db:populate && bundle exec rake db:test:prepare

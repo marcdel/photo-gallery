@@ -26,4 +26,11 @@ FactoryGirl.define do
     sequence(:title) { |n| "Gallery #{n}" }
     image File.new(Rails.root + "spec/factories/rails.png")
   end
+
+  factory :print do
+    sequence(:width) { |n| n }
+    sequence(:height) { |n| n }
+    print_type "Test"
+    sequence(:price) { |n| n }
+  end
 end
