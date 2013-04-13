@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Print do
-  let(:print) { FactoryGirl.create(:print) }
+  let(:print) { FactoryGirl.build(:print) }
 
   subject { print }
 

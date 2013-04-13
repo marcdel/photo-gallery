@@ -5,9 +5,7 @@ describe "Show Gallery page" do
 
   let(:user) { FactoryGirl.create(:user) }
   let(:gallery) { FactoryGirl.create(:gallery) }
-  let(:photo) do
-    gallery.photos.build(title: "Test", image: File.new(Rails.root + "spec/factories/rails.png"))
-  end
+  let(:photo) { FactoryGirl.create(:photo, gallery: gallery) }
 
   let(:page_title) { gallery.title }
   let(:heading) { gallery.title }
@@ -34,10 +32,7 @@ describe "Show Gallery page" do
 
   describe "photo pagination" do
     before(:all) do
-      12.times do |n|
-        test_photo = gallery.photos.build(title: "Test#{n}", image: File.new(Rails.root + "spec/factories/rails.png"))
-        test_photo.save
-      end
+      12.times { FactoryGirl.create(:photo, gallery: gallery) }
     end
     after(:all) { Photo.delete_all }
 

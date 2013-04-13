@@ -16,8 +16,11 @@ FactoryGirl.define do
     cover File.new(Rails.root + "spec/factories/rails.png")
 
     factory :gallery_with_photo do
-      after_create do |gallery|
-        create(:photo, gallery: gallery)
+      after(:build) do |gallery|
+        build(:photo, gallery: gallery)
+      end
+      after(:create) do |gallery|
+        gallery.photos.each { |photo| photo.save }
       end
     end
   end
@@ -30,7 +33,6 @@ FactoryGirl.define do
   factory :print do
     sequence(:width) { |n| n }
     sequence(:height) { |n| n }
-    print_type "Test"
     sequence(:price) { |n| n }
   end
 end

@@ -1,13 +1,8 @@
 require "spec_helper"
 
 describe Photo do
-  #TODO: https://gist.github.com/marcdel/5361613
-  #let(:gallery) { FactoryGirl.create(:gallery_with_photo) }
-  #let(:photo) { gallery.photos.first }
   let(:gallery) { FactoryGirl.create(:gallery) }
-  let(:photo) do
-    gallery.photos.build(title: "Test", image: File.new(Rails.root + "spec/factories/rails.png"))
-  end
+  let(:photo) { FactoryGirl.build(:photo, gallery: gallery) }
 
   before do
   end
