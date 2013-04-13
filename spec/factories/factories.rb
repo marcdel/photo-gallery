@@ -35,4 +35,8 @@ FactoryGirl.define do
     sequence(:height) { |n| n }
     sequence(:price) { |n| n }
   end
+
+  factory :photo_print do
+
+  end
 end

@@ -7,6 +7,10 @@
     <%= f.label :image %>
     <%= f.file_field :image %>
 
+    <%= f.label :prints %>
+    <%= collection_select(:photo, :print_ids, Print.all, :id, :name,
+                          {selected: @photo.print_ids}, {multiple: true}) %>
+
     <div>
       <%= f.submit "Save", class: "btn btn-large btn-primary" %>
     </div>

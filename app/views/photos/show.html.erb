@@ -2,3 +2,7 @@
 
 <h1><%= @photo.title %></h1>
 <%= image_tag @photo.image.url(:lightbox) %>
+
+<% @photo.prints.each do |print| %>
+    <%= print.name %> <br/>
+<% end %>
