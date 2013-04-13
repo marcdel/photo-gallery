@@ -45,7 +45,6 @@ describe "Show Gallery page" do
 
     it "should show each photo" do
       Photo.paginate(page: 1, per_page: 6).each do |photo|
-        page.should have_selector("a", text: photo.title)
         page.should have_selector("img", src: photo.image.url(:thumb))
       end
     end
