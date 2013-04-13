@@ -3,7 +3,7 @@ require "spec_helper"
 describe Photo do
   let(:gallery) { FactoryGirl.create(:gallery) }
   let(:print) { FactoryGirl.create(:print) }
-  let(:photo) { FactoryGirl.build(:photo, gallery: gallery) }
+  let(:photo) { FactoryGirl.create(:photo, gallery: gallery) }
 
   before do
     photo.photo_prints.build(print_id: print.id)

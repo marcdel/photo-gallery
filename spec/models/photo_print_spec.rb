@@ -15,14 +15,6 @@ describe PhotoPrint do
   its(:photo) { should == photo }
   its(:print) { should == print }
 
-  describe "inaccessible attributes" do
-    it "should not allow access to photo_id" do
-      expect do
-        PhotoPrint.new(photo_id: photo.id)
-      end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
-    end
-  end
-
   describe "when photo id is not present" do
     before { photo_print.photo_id = nil }
     it { should_not be_valid }
