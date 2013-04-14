@@ -2,7 +2,8 @@
 
 <table class="table table-striped table-bordered">
   <tr>
-    <th>Product</th>
+    <th>Photo</th>
+    <th>Print</th>
     <th>Quantity</th>
     <th>Price</th>
     <th>Total Price</th>
@@ -10,15 +11,16 @@
   </tr>
   <% for line_item in @cart.line_items %>
       <tr>
-        <td><%= line_item.print.name %></td>
+        <td><%= line_item.photo_print.photo.title %></td>
+        <td><%= line_item.photo_print.print.name %></td>
         <td><%= line_item.quantity %></td>
         <td><%= number_to_currency(line_item.price) %></td>
         <td><%= number_to_currency(line_item.total_price) %></td>
-        <td><%= link_to "remove", line_item_path(print_id: line_item.print), method: :delete %></td>
+        <td><%= link_to "remove", line_item_path(photo_print_id: line_item.photo_print), method: :delete %></td>
       </tr>
   <% end %>
   <tr>
-    <td class="total price" colspan="5">
+    <td class="total price" colspan="6">
       Total: <%= number_to_currency @cart.total_price %>
     </td>
   </tr>

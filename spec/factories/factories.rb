@@ -36,6 +36,9 @@ FactoryGirl.define do
     sequence(:price) { |n| n }
   end
 
+  factory :photo_print do
+  end
+
   factory :cart do
   end
 

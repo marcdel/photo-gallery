@@ -2,7 +2,10 @@ require 'spec_helper'
 
 describe Cart do
   let(:cart) { FactoryGirl.create(:cart) }
+  let(:gallery) { FactoryGirl.create(:gallery) }
+  let(:photo) { FactoryGirl.create(:photo, gallery: gallery) }
   let(:print) { FactoryGirl.create(:print) }
+  let(:photo_print) { FactoryGirl.create(:photo_print, photo: photo, print: print) }
 
   subject { cart }
 
@@ -13,7 +16,7 @@ describe Cart do
 
   describe "total price" do
     before do
-      10.times { FactoryGirl.create(:line_item, cart: cart, print: print, price: 2, quantity: 2) }
+      10.times { FactoryGirl.create(:line_item, cart: cart, photo_print: photo_print, price: 2, quantity: 2) }
     end
 
     it "should have the correct total price" do

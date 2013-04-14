@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>RailsDependency</ID>
+  <OriginalElement>#photo_gallery</OriginalElement>
+  <nodes>
+    <node x="0.0" y="242.0">User</node>
+    <node x="831.5" y="158.0">PhotoPrint</node>
+    <node x="0.0" y="438.0">Cart</node>
+    <node x="398.0" y="46.0">Photo</node>
+    <node x="277.0" y="427.0">LineItem</node>
+    <node x="780.0" y="0.0">Print</node>
+    <node x="0.0" y="35.0">Gallery</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Print" target="PhotoPrint">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Photo" target="Print">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Print" target="Photo">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Gallery" target="Photo">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Photo" target="PhotoPrint">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Cart" target="LineItem">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9700598802395209" x="491.0" y="250.5" />
+  <SelectedNodes>
+    <node>PhotoPrint</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Association fields</Category>
+    <Category>Migration fields</Category>
+  </Categories>
+</Diagram>
+

@@ -9,8 +9,8 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <% @photo.prints.each do |print| %>
-        <%= link_to print.name, line_items_path(print_id: print), method: :post %><br/>
+    <% @photo.photo_prints.each do |photo_print| %>
+        <%= link_to photo_print.print.name, line_items_path(photo_print_id: photo_print), method: :post %><br/>
     <% end %>
   </ul>
 </div>

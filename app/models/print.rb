@@ -1,6 +1,8 @@
 class Print < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   attr_accessible :width, :height, :price, :print_type
+  has_many :photo_prints, dependent: :destroy
+  has_many :photos, through: :photo_prints
 
   validates :width, presence: true, numericality: { greater_than: 0 }
   validates :height, presence: true, numericality: { greater_than: 0 }

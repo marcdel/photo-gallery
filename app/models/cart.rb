@@ -19,7 +19,7 @@ class Cart < ActiveRecord::Base
     line_items.each_with_index do |item, index|
       values.merge!({
                         "amount_#{index+1}" => item.price,
-                        "item_name_#{index+1}" => item.print.name,
+                        "item_name_#{index+1}" => item.photo_print.photo.title,
                         "item_number_#{index+1}" => item.id,
                         "quantity_#{index+1}" => item.quantity
                     })
