@@ -10,8 +10,8 @@ class LineItemsController < ApplicationController
   end
 
   def destroy
-    @photo_print = PhotoPrint.find(params[:photo_print_id])
-    flash[:notice] = "Removed #{@photo_print.photo.title}: #{@photo_print.print.name} from cart."
+    @line_item = LineItem.find_by_photo_print_id(params[:photo_print_id]).destroy
+    flash[:notice] = "Removed #{@line_item.photo_print.photo.title}: #{@line_item.photo_print.print.name} from cart."
     redirect_to cart_url current_cart
   end
 end
