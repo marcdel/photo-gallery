@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130413183101) do
+ActiveRecord::Schema.define(:version => 20130413233408) do
+
+  create_table "carts", :force => true do |t|
+    t.datetime "purchased_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "galleries", :force => true do |t|
     t.string   "title"
@@ -22,6 +28,15 @@ ActiveRecord::Schema.define(:version => 20130413183101) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+  end
+
+  create_table "line_items", :force => true do |t|
+    t.integer  "print_id"
+    t.integer  "cart_id"
+    t.decimal  "price"
+    t.integer  "quantity"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "photo_prints", :force => true do |t|

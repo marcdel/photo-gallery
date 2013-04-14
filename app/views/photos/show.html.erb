@@ -1,8 +1,16 @@
 <% provide(:title, @photo.title) %>
 
 <h1><%= @photo.title %></h1>
-<%= image_tag @photo.image.url(:lightbox) %>
+<%= image_tag @photo.image.url(:lightbox), class: "thumbnail" %><br/>
 
-<% @photo.prints.each do |print| %>
-    <%= print.name %> <br/>
-<% end %>
+<div class="btn-group">
+  <a class="btn btn-primary btn-small dropdown-toggle" data-toggle="dropdown" href="#">
+    Add to Cart
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <% @photo.prints.each do |print| %>
+        <%= link_to print.name, line_items_path(print_id: print), method: :post %><br/>
+    <% end %>
+  </ul>
+</div>

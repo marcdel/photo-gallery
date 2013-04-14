@@ -1,0 +1,30 @@
+ <h1>Shopping Cart</h1>
+
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Total Price</th>
+    <th></th>
+  </tr>
+  <% for line_item in @cart.line_items %>
+      <tr>
+        <td><%= line_item.print.name %></td>
+        <td><%= line_item.quantity %></td>
+        <td><%= number_to_currency(line_item.price) %></td>
+        <td><%= number_to_currency(line_item.total_price) %></td>
+        <td><%= link_to "remove", line_item_path(print_id: line_item.print), method: :delete %></td>
+      </tr>
+  <% end %>
+  <tr>
+    <td class="total price" colspan="5">
+      Total: <%= number_to_currency @cart.total_price %>
+    </td>
+  </tr>
+</table>
+
+<p>
+  <%= link_to "Continue Shopping", galleries_url %> |
+  <%= link_to "Checkout", @cart.paypal_url(galleries_url, "#") %>
+</p>

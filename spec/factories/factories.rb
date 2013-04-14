@@ -36,7 +36,11 @@ FactoryGirl.define do
     sequence(:price) { |n| n }
   end
 
-  factory :photo_print do
+  factory :cart do
+  end
 
+  factory :line_item do
+    sequence(:price) { |n| n }
+    sequence(:quantity) { |n| n }
   end
 end

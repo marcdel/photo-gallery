@@ -4,6 +4,9 @@ PhotoGallery::Application.routes.draw do
     resources :photos
   end
 
+  resources :line_items, only: [:create, :destroy]
+  resources :carts, only: :show
+
   resources :sessions, only: [:new, :create, :destroy]
 
   get '/signin', to: 'sessions#new'
