@@ -1,13 +1,12 @@
 PhotoGallery::Application.routes.draw do
 
-  resources :payment_notifications
-
   resources :galleries do
     resources :photos
   end
 
   resources :line_items, only: [:create, :destroy]
   resources :carts, only: :show
+  resources :payment_notifications
 
   resources :sessions, only: [:new, :create, :destroy]
 

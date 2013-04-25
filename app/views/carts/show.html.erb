@@ -1,6 +1,6 @@
 <% provide(:title, "Shopping Cart") %>
 
- <h1>Shopping Cart</h1>
+<h1>Shopping Cart</h1>
 
 <table class="table table-striped table-bordered">
   <tr>
@@ -28,7 +28,11 @@
   </tr>
 </table>
 
-<p>
-  <%= link_to "Continue Shopping", galleries_url %> |
-  <%= link_to "Checkout", @cart.paypal_url(galleries_url, payment_notifications_url) %>
-</p>
+<%= form_tag ENV['PAYPAL_URL'] do %>
+    <%= hidden_field_tag :cmd, '_s-xclick' %>
+    <%= hidden_field_tag :encrypted, @cart.paypal_encrypted(galleries_url, payment_notifications_url(secret: ENV['PAYPAL_SECRET'])) %>
+    <p>
+      <%= link_to 'Continue Shopping', galleries_url %> |
+      <%= submit_tag 'Checkout', class: 'btn btn-primary' %>
+    </p>
+<% end %>
