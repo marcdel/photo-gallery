@@ -1,5 +1,7 @@
 PhotoGallery::Application.routes.draw do
 
+  resources :payment_notifications
+
   resources :galleries do
     resources :photos
   end

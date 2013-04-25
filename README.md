@@ -13,3 +13,6 @@ Or
 
 Create sample data
     bundle exec rake db:reset && bundle exec rake db:populate && bundle exec rake db:test:prepare
+
+Paypal Integration Guide
+	https://cms.paypal.com/cms_content/en_US/files/developer/PP_OrderMgmt_IntegrationGuide.pdf

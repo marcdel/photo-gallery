@@ -30,5 +30,5 @@
 
 <p>
   <%= link_to "Continue Shopping", galleries_url %> |
-  <%= link_to "Checkout", @cart.paypal_url(galleries_url, "#") %>
+  <%= link_to "Checkout", @cart.paypal_url(galleries_url, payment_notifications_url) %>
 </p>
