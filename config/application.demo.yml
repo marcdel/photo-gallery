@@ -8,12 +8,8 @@ development:
   PAYPAL_SECRET: foobar
   PAYPAL_CERT_ID: cert_id
   PAYPAL_URL: "https://www.sandbox.paypal.com/cgi-bin/webscr"
+  PAYPAL_CERT_PEM: "sandbox_web_api\n-----BEGIN CERTIFICATE-----\nPaypalCert\n-----END CERTIFICATE-----\n"
+  APP_CERT_PEM: "-----BEGIN CERTIFICATE-----\nAppCert\n-----END CERTIFICATE-----\n"
+  APP_KEY_PEM: "-----BEGIN RSA PRIVATE KEY-----\nAppKey\n-----END RSA PRIVATE KEY-----\n"
 
 production:
-  AWS_BUCKET: bucket
-  AWS_ACCESS_KEY_ID: access_key
-  AWS_SECRET_ACCESS_KEY: secret_key
-  PAYPAL_EMAIL: user@email.com
-  PAYPAL_SECRET: foobar
-  PAYPAL_CERT_ID: cert_id
-  PAYPAL_URL: "https://www.paypal.com/cgi-bin/webscr"

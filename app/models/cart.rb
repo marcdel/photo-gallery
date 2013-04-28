@@ -28,12 +28,20 @@ class Cart < ActiveRecord::Base
     encrypt_for_paypal(values)
   end
 
-  PAYPAL_CERT_PEM = File.read("#{Rails.root}/certs/paypal_cert.pem")
-  APP_CERT_PEM = File.read("#{Rails.root}/certs/app_cert.pem")
-  APP_KEY_PEM = File.read("#{Rails.root}/certs/app_key.pem")
+  PAYPAL_CERT_PEM1 = File.read("#{Rails.root}/certs/paypal_cert.pem")
+  APP_CERT_PEM1 = File.read("#{Rails.root}/certs/app_cert.pem")
+  APP_KEY_PEM1 = File.read("#{Rails.root}/certs/app_key.pem")
+
+  PAYPAL_CERT_PEM = ENV['PAYPAL_CERT_PEM']
+  APP_CERT_PEM = ENV['APP_CERT_PEM']
+  APP_KEY_PEM = ENV['APP_KEY_PEM']
 
   def encrypt_for_paypal(values)
-    signed = OpenSSL::PKCS7::sign(OpenSSL::X509::Certificate.new(APP_CERT_PEM), OpenSSL::PKey::RSA.new(APP_KEY_PEM, ''), values.map { |k, v| "#{k}=#{v}" }.join("\n"), [], OpenSSL::PKCS7::BINARY)
-    OpenSSL::PKCS7::encrypt([OpenSSL::X509::Certificate.new(PAYPAL_CERT_PEM)], signed.to_der, OpenSSL::Cipher::Cipher::new("DES3"), OpenSSL::PKCS7::BINARY).to_s.gsub("\n", "")
+    paypal_cert = OpenSSL::X509::Certificate.new(PAYPAL_CERT_PEM)
+    app_cert = OpenSSL::X509::Certificate.new(APP_CERT_PEM)
+    app_key = OpenSSL::PKey::RSA.new(APP_KEY_PEM, '')
+
+    signed = OpenSSL::PKCS7::sign(app_cert, app_key, values.map { |k, v| "#{k}=#{v}" }.join("\n"), [], OpenSSL::PKCS7::BINARY)
+    OpenSSL::PKCS7::encrypt([paypal_cert], signed.to_der, OpenSSL::Cipher::Cipher::new("DES3"), OpenSSL::PKCS7::BINARY).to_s.gsub("\n", "")
   end
 end
