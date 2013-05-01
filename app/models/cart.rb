@@ -26,7 +26,7 @@ class Cart < ActiveRecord::Base
                         "quantity_#{index+1}" => item.quantity
                     })
     end
-    
+
     encrypt_for_paypal(values)
   end
 

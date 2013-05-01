@@ -1,5 +1,6 @@
 class PaymentNotification < ActiveRecord::Base
   belongs_to :cart
+  attr_accessible :params, :cart_id, :status, :transaction_id
   serialize :params
   after_create :mark_cart_as_purchased
 
